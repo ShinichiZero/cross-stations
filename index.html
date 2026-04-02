@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--
+    Content Security Policy
+    - script-src 'self'         : only load scripts from this origin
+    - style-src 'self' fonts.googleapis.com : allow Google Fonts stylesheet
+    - font-src fonts.gstatic.com            : allow Google Fonts files
+    - img-src 'self' data:                  : allow local images & data URIs
+    - No inline scripts or styles are used
+    - frame-ancestors not settable via meta; handled by hosting headers
+  -->
+  <meta http-equiv="Content-Security-Policy"
+    content="
+      default-src 'none';
+      script-src 'self';
+      style-src 'self' https://fonts.googleapis.com;
+      font-src https://fonts.gstatic.com;
+      img-src 'self' data:;
+      connect-src 'none';
+      base-uri 'self';
+      form-action 'none';
+    ">
+  <title>Stations of the Cross</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ── Sticky Header ─────────────────────────────────────────────────── -->
+  <header class="site-header" id="site-header" role="banner">
+    <div class="header-inner">
+      <span class="header-cross" aria-hidden="true">✝</span>
+      <span class="header-station-label" id="header-station">Stations of the Cross</span>
+      <span class="header-candles-lit" id="header-candles-lit" aria-live="polite" aria-atomic="true"></span>
+    </div>
+  </header>
+
+  <main id="main-content">
+
+    <!-- ── Introduction ──────────────────────────────────────────────────── -->
+    <section class="intro-section" aria-label="Introduction">
+      <div class="intro-bg" aria-hidden="true"></div>
+      <div class="intro-content">
+        <div class="animate-on-scroll">
+          <p class="intro-eyebrow">A journey of prayer and reflection</p>
+          <h1 class="intro-heading">Stations<br>of the Cross</h1>
+          <p class="intro-body">
+            Walk with Jesus through the fourteen moments of His Passion.
+            Light a virtual candle at each station as a sign of your prayer.
+          </p>
+          <a href="#station-1" class="begin-btn" aria-label="Begin the journey at Station I">Begin the Journey</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Station I ─────────────────────────────────────────────────────── -->
+    <section class="station" id="station-1" data-station="1"
+             aria-label="Station I: Jesus is condemned to death">
+      <div class="station-bg station-bg--1" aria-hidden="true"></div>
+      <div class="station-content">
+        <div class="station-numeral animate-on-scroll" aria-hidden="true">I</div>
+        <div class="station-body animate-on-scroll">
+          <h2 class="station-title">Jesus is condemned to death</h2>
+          <p class="station-reflection">
+            Pilate washes his hands yet the guilt remains with those who cried out.
+            Jesus, though innocent, bows to unjust judgment. In every false accusation
+            we bear, may we find the courage to trust in Your justice.
+          </p>
+          <p class="station-prayer">
+            <em>We adore You, O Christ, and we praise You, because by Your holy Cross You have redeemed the world.</em>
+          </p>
+          <button class="candle-btn" data-station="1"
+                  aria-label="Light a candle for Station I" aria-pressed="false">
+            <span class="candle-icon" aria-hidden="true">🕯️</span>
+            <span class="candle-label">Light a Candle</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Station II ────────────────────────────────────────────────────── -->
+    <section class="station" id="station-2" data-station="2"
+             aria-label="Station II: Jesus takes up His Cross">
+      <div class="station-bg station-bg--2" aria-hidden="true"></div>
+      <div class="station-content">
+        <div class="station-numeral animate-on-scroll" aria-hidden="true">II</div>
+        <div class="station-body animate-on-scroll">
+          <h2 class="station-title">Jesus takes up His Cross</h2>
+          <p class="station-reflection">
+            The heavy wood is laid upon His shoulders — a weight that is not His own
+            but ours. With each step He chooses love over escape. Teach us, Lord,
+            to embrace the crosses in our lives with the same willing heart.
+          </p>
+          <p class="station-prayer">
+            <em>We adore You, O Christ, and we praise You, because by Your holy Cross You have redeemed the world.</em>
+          </p>
+          <button class="candle-btn" data-station="2"
+                  aria-label="Light a candle for Station II" aria-pressed="false">
+            <span class="candle-icon" aria-hidden="true">🕯️</span>
+            <span class="candle-label">Light a Candle</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Station III ───────────────────────────────────────────────────── -->
+    <section class="station" id="station-3" data-station="3"
+             aria-label="Station III: Jesus falls the first time">
+      <div class="station-bg station-bg--3" aria-hidden="true"></div>
+      <div class="station-content">
+        <div class="station-numeral animate-on-scroll" aria-hidden="true">III</div>
+        <div class="station-body animate-on-scroll">
+          <h2 class="station-title">Jesus falls the first time</h2>
+          <p class="station-reflection">
+            The weight of the world brings Him to His knees, yet He rises. Weakness is
+            not defeat. In our failures and falls, may we remember that He fell for us
+            and rose again — and that His strength is made perfect in our frailty.
+          </p>
+          <p class="station-prayer">
+            <em>We adore You, O Christ, and we praise You, because by Your holy Cross You have redeemed the world.</em>
+          </p>
+          <button class="candle-btn" data-station="3"
+                  aria-label="Light a candle for Station III" aria-pressed="false">
+            <span class="candle-icon" aria-hidden="true">🕯️</span>
+            <span class="candle-label">Light a Candle</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Station IV ────────────────────────────────────────────────────── -->
+    <section class="station" id="station-4" data-station="4"
+             aria-label="Station IV: Jesus meets His Mother">
+      <div class="station-bg station-bg--4" aria-hidden="true"></div>
+      <div class="station-content">
+        <div class="station-numeral animate-on-scroll" aria-hidden="true">IV</div>
+        <div class="station-body animate-on-scroll">
+          <h2 class="station-title">Jesus meets His Mother</h2>
+          <p class="station-reflection">
+            Eyes meet across the crowd — the grief of a mother, the love of a Son.
+            No words are needed. Mary walks this road beside Him still, interceding
+            for us in every moment of sorrow. Hail, Holy Queen, Mother of Mercy.
+          </p>
+          <p class="station-prayer">
+            <em>We adore You, O Christ, and we praise You, because by Your holy Cross You have redeemed the world.</em>
+          </p>
+          <button class="candle-btn" data-station="4"
+                  aria-label="Light a candle for Station IV" aria-pressed="false">
+            <span class="candle-icon" aria-hidden="true">🕯️</span>
+            <span class="candle-label">Light a Candle</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Station V ─────────────────────────────────────────────────────── -->
+    <section class="station" id="station-5" data-station="5"
+             aria-label="Station V: Simon of Cyrene carries the Cross">
+      <div class="station-bg station-bg--5" aria-hidden="true"></div>
+      <div class="station-content">
+        <div class="station-numeral animate-on-scroll" aria-hidden="true">V</div>
+        <div class="station-body animate-on-scroll">
+          <h2 class="station-title">Simon of Cyrene carries the Cross</h2>
+          <p class="station-reflection">
+            A stranger is pressed into service, yet that reluctant act of burden-sharing
+            becomes eternal. Every time we help another in need — willingly or not —
+            we walk in Simon's footsteps and help carry the Cross of Christ.
+          </p>
+          <p class="station-prayer">
+            <em>We adore You, O Christ, and we praise You, because by Your holy Cross You have redeemed the world.</em>
+          </p>
+          <button class="candle-btn" data-station="5"
+                  aria-label="Light a candle for Station V" aria-pressed="false">
+            <span class="candle-icon" aria-hidden="true">🕯️</span>
+            <span class="candle-label">Light a Candle</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Station VI ────────────────────────────────────────────────────── -->
+    <section class="station" id="station-6" data-station="6"
+             aria-label="Station VI: Veronica wipes the face of Jesus">
+      <div class="station-bg station-bg--6" aria-hidden="true"></div>
+      <div class="station-content">
+        <div class="station-numeral animate-on-scroll" aria-hidden="true">VI</div>
+        <div class="station-body animate-on-scroll">
+          <h2 class="station-title">Veronica wipes the face of Jesus</h2>
+          <p class="station-reflection">
+            One small act of compassion in the chaos of the crowd. Veronica steps
+            forward with cloth in hand, and His image is imprinted on it forever.
+            May we dare to act with kindness wherever we see suffering.
+          </p>
+          <p class="station-prayer">
+            <em>We adore You, O Christ, and we praise You, because by Your holy Cross You have redeemed the world.</em>
+          </p>
+          <button class="candle-btn" data-station="6"
+                  aria-label="Light a candle for Station VI" aria-pressed="false">
+            <span class="candle-icon" aria-hidden="true">🕯️</span>
+            <span class="candle-label">Light a Candle</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Station VII ───────────────────────────────────────────────────── -->
+    <section class="station" id="station-7" data-station="7"
+             aria-label="Station VII: Jesus falls the second time">
+      <div class="station-bg station-bg--7" aria-hidden="true"></div>
+      <div class="station-content">
+        <div class="station-numeral animate-on-scroll" aria-hidden="true">VII</div>
+        <div class="station-body animate-on-scroll">
+          <h2 class="station-title">Jesus falls the second time</h2>
+          <p class="station-reflection">
+            Again the earth meets His knees. The crowd presses on. He rises once more,
+            not for Himself but for us. When we relapse into old wounds or old sins,
+            His mercy rises with us. It never runs dry.
+          </p>
+          <p class="station-prayer">
+            <em>We adore You, O Christ, and we praise You, because by Your holy Cross You have redeemed the world.</em>
+          </p>
+          <button class="candle-btn" data-station="7"
+                  aria-label="Light a candle for Station VII" aria-pressed="false">
+            <span class="candle-icon" aria-hidden="true">🕯️</span>
+            <span class="candle-label">Light a Candle</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Station VIII ──────────────────────────────────────────────────── -->
+    <section class="station" id="station-8" data-station="8"
+             aria-label="Station VIII: Jesus meets the women of Jerusalem">
+      <div class="station-bg station-bg--8" aria-hidden="true"></div>
+      <div class="station-content">
+        <div class="station-numeral animate-on-scroll" aria-hidden="true">VIII</div>
+        <div class="station-body animate-on-scroll">
+          <h2 class="station-title">Jesus meets the women of Jerusalem</h2>
+          <p class="station-reflection">
+            "Daughters of Jerusalem, do not weep for me; weep for yourselves and
+            for your children." Even in His darkest hour He turns outward, bearing
+            witness to a truth greater than His suffering. May we learn to look
+            beyond ourselves in our own pain.
+          </p>
+          <p class="station-prayer">
+            <em>We adore You, O Christ, and we praise You, because by Your holy Cross You have redeemed the world.</em>
+          </p>
+          <button class="candle-btn" data-station="8"
+                  aria-label="Light a candle for Station VIII" aria-pressed="false">
+            <span class="candle-icon" aria-hidden="true">🕯️</span>
+            <span class="candle-label">Light a Candle</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Station IX ────────────────────────────────────────────────────── -->
+    <section class="station" id="station-9" data-station="9"
+             aria-label="Station IX: Jesus falls the third time">
+      <div class="station-bg station-bg--9" aria-hidden="true"></div>
+      <div class="station-content">
+        <div class="station-numeral animate-on-scroll" aria-hidden="true">IX</div>
+        <div class="station-body animate-on-scroll">
+          <h2 class="station-title">Jesus falls the third time</h2>
+          <p class="station-reflection">
+            Nearly at Golgotha, He falls once more. The finish line is near, yet the
+            body is at its limit. He does not give up. For every moment we feel we
+            cannot go on, His perseverance is the promise that grace is sufficient.
+          </p>
+          <p class="station-prayer">
+            <em>We adore You, O Christ, and we praise You, because by Your holy Cross You have redeemed the world.</em>
+          </p>
+          <button class="candle-btn" data-station="9"
+                  aria-label="Light a candle for Station IX" aria-pressed="false">
+            <span class="candle-icon" aria-hidden="true">🕯️</span>
+            <span class="candle-label">Light a Candle</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Station X ─────────────────────────────────────────────────────── -->
+    <section class="station" id="station-10" data-station="10"
+             aria-label="Station X: Jesus is stripped of His garments">
+      <div class="station-bg station-bg--10" aria-hidden="true"></div>
+      <div class="station-content">
+        <div class="station-numeral animate-on-scroll" aria-hidden="true">X</div>
+        <div class="station-body animate-on-scroll">
+          <h2 class="station-title">Jesus is stripped of His garments</h2>
+          <p class="station-reflection">
+            All dignity is taken from Him — yet He is most fully Himself: the Lamb
+            offered freely. In humiliation and loss, when we feel stripped bare,
+            may we find in His nakedness the cover of infinite worth.
+          </p>
+          <p class="station-prayer">
+            <em>We adore You, O Christ, and we praise You, because by Your holy Cross You have redeemed the world.</em>
+          </p>
+          <button class="candle-btn" data-station="10"
+                  aria-label="Light a candle for Station X" aria-pressed="false">
+            <span class="candle-icon" aria-hidden="true">🕯️</span>
+            <span class="candle-label">Light a Candle</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Station XI ────────────────────────────────────────────────────── -->
+    <section class="station" id="station-11" data-station="11"
+             aria-label="Station XI: Jesus is nailed to the Cross">
+      <div class="station-bg station-bg--11" aria-hidden="true"></div>
+      <div class="station-content">
+        <div class="station-numeral animate-on-scroll" aria-hidden="true">XI</div>
+        <div class="station-body animate-on-scroll">
+          <h2 class="station-title">Jesus is nailed to the Cross</h2>
+          <p class="station-reflection">
+            The nails are driven through flesh — the very hands that healed the blind,
+            raised the dead, blessed the children. Love, crucified. "Father, forgive
+            them; for they know not what they do." May we echo that forgiveness in
+            our own lives.
+          </p>
+          <p class="station-prayer">
+            <em>We adore You, O Christ, and we praise You, because by Your holy Cross You have redeemed the world.</em>
+          </p>
+          <button class="candle-btn" data-station="11"
+                  aria-label="Light a candle for Station XI" aria-pressed="false">
+            <span class="candle-icon" aria-hidden="true">🕯️</span>
+            <span class="candle-label">Light a Candle</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Station XII ───────────────────────────────────────────────────── -->
+    <section class="station" id="station-12" data-station="12"
+             aria-label="Station XII: Jesus dies on the Cross">
+      <div class="station-bg station-bg--12" aria-hidden="true"></div>
+      <div class="station-content">
+        <div class="station-numeral animate-on-scroll" aria-hidden="true">XII</div>
+        <div class="station-body animate-on-scroll">
+          <h2 class="station-title">Jesus dies on the Cross</h2>
+          <p class="station-reflection">
+            "It is finished." Three hours of darkness, and then the veil of the Temple
+            is torn in two. Death is not the end — it is the door. In His last breath,
+            every breath we will ever take was redeemed.
+          </p>
+          <p class="station-prayer">
+            <em>We adore You, O Christ, and we praise You, because by Your holy Cross You have redeemed the world.</em>
+          </p>
+          <button class="candle-btn" data-station="12"
+                  aria-label="Light a candle for Station XII" aria-pressed="false">
+            <span class="candle-icon" aria-hidden="true">🕯️</span>
+            <span class="candle-label">Light a Candle</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Station XIII ──────────────────────────────────────────────────── -->
+    <section class="station" id="station-13" data-station="13"
+             aria-label="Station XIII: Jesus is taken down from the Cross">
+      <div class="station-bg station-bg--13" aria-hidden="true"></div>
+      <div class="station-content">
+        <div class="station-numeral animate-on-scroll" aria-hidden="true">XIII</div>
+        <div class="station-body animate-on-scroll">
+          <h2 class="station-title">Jesus is taken down from the Cross</h2>
+          <p class="station-reflection">
+            Into His Mother's arms He is lowered. The Pietà — sorrow made visible.
+            Mary holds the Saviour of the world, and her arms become the arms of the
+            Church. We too are held in those moments when we are broken beyond words.
+          </p>
+          <p class="station-prayer">
+            <em>We adore You, O Christ, and we praise You, because by Your holy Cross You have redeemed the world.</em>
+          </p>
+          <button class="candle-btn" data-station="13"
+                  aria-label="Light a candle for Station XIII" aria-pressed="false">
+            <span class="candle-icon" aria-hidden="true">🕯️</span>
+            <span class="candle-label">Light a Candle</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Station XIV ───────────────────────────────────────────────────── -->
+    <section class="station" id="station-14" data-station="14"
+             aria-label="Station XIV: Jesus is laid in the tomb">
+      <div class="station-bg station-bg--14" aria-hidden="true"></div>
+      <div class="station-content">
+        <div class="station-numeral animate-on-scroll" aria-hidden="true">XIV</div>
+        <div class="station-body animate-on-scroll">
+          <h2 class="station-title">Jesus is laid in the tomb</h2>
+          <p class="station-reflection">
+            Silence. Stone. Darkness. But not the end. The seed that falls into the
+            earth and dies bears much fruit. The tomb could not hold Him — and because
+            He rose, neither death, nor sorrow, nor darkness has the final word in our
+            lives.
+          </p>
+          <p class="station-prayer">
+            <em>We adore You, O Christ, and we praise You, because by Your holy Cross You have redeemed the world.</em>
+          </p>
+          <button class="candle-btn" data-station="14"
+                  aria-label="Light a candle for Station XIV" aria-pressed="false">
+            <span class="candle-icon" aria-hidden="true">🕯️</span>
+            <span class="candle-label">Light a Candle</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner animate-on-scroll">
+      <span class="footer-cross" aria-hidden="true">✝</span>
+      <p>May we carry our crosses with faith, hope, and love.</p>
+      <p class="footer-note">He is risen. Alleluia.</p>
+    </div>
+  </footer>
+
+  <script src="candle.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

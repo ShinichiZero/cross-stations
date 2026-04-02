@@ -1,0 +1,499 @@
+/* =========================================================================
+   Stations of the Cross – style.css
+   Full-viewport, scroll-driven, responsive design
+   ========================================================================= */
+
+/* ── Custom Properties ─────────────────────────────────────────────────── */
+:root {
+  --clr-bg:          #0d0d14;
+  --clr-surface:     #13131f;
+  --clr-gold:        #c9a84c;
+  --clr-gold-light:  #e8c97a;
+  --clr-gold-glow:   rgba(201, 168, 76, 0.35);
+  --clr-text:        #f0ebe0;
+  --clr-text-muted:  #a89d8a;
+  --clr-border:      rgba(201, 168, 76, 0.2);
+  --clr-candle-lit:  #ff9f43;
+  --clr-candle-glow: rgba(255, 159, 67, 0.5);
+
+  --font-serif:  'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans:   'Lato', system-ui, -apple-system, sans-serif;
+
+  --header-h:    64px;
+  --transition:  0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius:      8px;
+}
+
+/* ── Reset & Base ───────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  background-color: var(--clr-bg);
+  color: var(--clr-text);
+  font-family: var(--font-sans);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── Skip Link (accessibility) ──────────────────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--clr-gold);
+  color: #000;
+  z-index: 9999;
+  border-radius: var(--radius);
+  font-weight: 700;
+}
+.skip-link:focus { top: 0.5rem; }
+
+/* ── Sticky Header ───────────────────────────────────────────────────────── */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-h);
+  z-index: 100;
+  background: rgba(13, 13, 20, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--clr-border);
+  transition: background var(--transition), box-shadow var(--transition);
+}
+
+.site-header.scrolled {
+  background: rgba(13, 13, 20, 0.97);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.header-cross {
+  font-size: 1.2rem;
+  color: var(--clr-gold);
+  flex-shrink: 0;
+}
+
+.header-station-label {
+  font-family: var(--font-serif);
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  color: var(--clr-text);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: color var(--transition);
+}
+
+.header-candles-lit {
+  font-size: 0.8rem;
+  color: var(--clr-gold);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* ── Scroll Animation Classes ───────────────────────────────────────────── */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.animate-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger children */
+.animate-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+.animate-on-scroll:nth-child(3) { transition-delay: 0.2s; }
+.animate-on-scroll:nth-child(4) { transition-delay: 0.3s; }
+
+/* ── Introduction Section ───────────────────────────────────────────────── */
+.intro-section {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: calc(var(--header-h) + 2rem) 1.5rem 3rem;
+}
+
+.intro-bg {
+  position: absolute;
+  inset: -20%;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(201, 168, 76, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 70% 70%, rgba(120, 40, 40, 0.15) 0%, transparent 55%),
+    linear-gradient(160deg, #0d0d14 0%, #1a0f1e 50%, #0d0d14 100%);
+  will-change: transform;
+  transition: none;
+}
+
+.intro-content {
+  position: relative;
+  text-align: center;
+  max-width: 680px;
+}
+
+.intro-eyebrow {
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--clr-gold);
+  margin-bottom: 1.25rem;
+}
+
+.intro-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 700;
+  line-height: 1.05;
+  color: var(--clr-text);
+  margin-bottom: 1.5rem;
+}
+
+.intro-body {
+  font-size: clamp(1rem, 2.5vw, 1.15rem);
+  color: var(--clr-text-muted);
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+}
+
+.begin-btn {
+  display: inline-block;
+  padding: 0.85rem 2.25rem;
+  border: 1px solid var(--clr-gold);
+  border-radius: 40px;
+  color: var(--clr-gold);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background var(--transition), color var(--transition), box-shadow var(--transition);
+}
+
+.begin-btn:hover,
+.begin-btn:focus-visible {
+  background: var(--clr-gold);
+  color: #000;
+  box-shadow: 0 0 20px var(--clr-gold-glow);
+  outline: none;
+}
+
+/* ── Station Sections ───────────────────────────────────────────────────── */
+.station {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: calc(var(--header-h) + 3rem) 1.5rem 4rem;
+}
+
+/* Parallax background layer (moved by JS on scroll) */
+.station-bg {
+  position: absolute;
+  inset: -15%;
+  will-change: transform;
+  background-size: cover;
+  background-position: center;
+  transition: none;
+}
+
+/* Per-station gradient backgrounds */
+.station-bg--1  { background: radial-gradient(ellipse at 25% 35%, rgba(80,20,20,0.7) 0%, transparent 65%), linear-gradient(170deg, #110812 0%, #1c0a0a 100%); }
+.station-bg--2  { background: radial-gradient(ellipse at 75% 30%, rgba(40,25,65,0.7) 0%, transparent 60%), linear-gradient(160deg, #0d0814 0%, #130a1e 100%); }
+.station-bg--3  { background: radial-gradient(ellipse at 30% 60%, rgba(20,40,60,0.8) 0%, transparent 55%), linear-gradient(155deg, #08101a 0%, #0d1522 100%); }
+.station-bg--4  { background: radial-gradient(ellipse at 60% 40%, rgba(60,15,50,0.7) 0%, transparent 60%), linear-gradient(165deg, #10080f 0%, #1a0f19 100%); }
+.station-bg--5  { background: radial-gradient(ellipse at 40% 50%, rgba(25,45,25,0.6) 0%, transparent 58%), linear-gradient(150deg, #081008 0%, #0d1a0d 100%); }
+.station-bg--6  { background: radial-gradient(ellipse at 70% 35%, rgba(55,40,10,0.7) 0%, transparent 60%), linear-gradient(160deg, #121008 0%, #1c170a 100%); }
+.station-bg--7  { background: radial-gradient(ellipse at 35% 55%, rgba(45,15,15,0.75) 0%, transparent 60%), linear-gradient(170deg, #140808 0%, #1c0c0c 100%); }
+.station-bg--8  { background: radial-gradient(ellipse at 65% 30%, rgba(20,35,55,0.7) 0%, transparent 58%), linear-gradient(155deg, #080e14 0%, #0c1420 100%); }
+.station-bg--9  { background: radial-gradient(ellipse at 30% 45%, rgba(50,20,10,0.8) 0%, transparent 55%), linear-gradient(160deg, #120a06 0%, #1c100a 100%); }
+.station-bg--10 { background: radial-gradient(ellipse at 55% 40%, rgba(30,15,55,0.7) 0%, transparent 60%), linear-gradient(165deg, #0c0814 0%, #14101c 100%); }
+.station-bg--11 { background: radial-gradient(ellipse at 35% 40%, rgba(70,10,10,0.8) 0%, transparent 55%), linear-gradient(155deg, #160606 0%, #200a0a 100%); }
+.station-bg--12 { background: radial-gradient(ellipse at 50% 50%, rgba(60,10,10,0.9) 0%, transparent 50%), linear-gradient(180deg, #0d0000 0%, #1a0000 50%, #000000 100%); }
+.station-bg--13 { background: radial-gradient(ellipse at 40% 60%, rgba(25,20,45,0.8) 0%, transparent 58%), linear-gradient(160deg, #0a0810 0%, #12101c 100%); }
+.station-bg--14 { background: radial-gradient(ellipse at 50% 40%, rgba(10,20,40,0.7) 0%, transparent 60%), linear-gradient(170deg, #060810 0%, #0c1020 100%); }
+
+/* Horizontal gold separator between stations */
+.station::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(200px, 40%);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--clr-gold), transparent);
+}
+
+/* Station content grid */
+.station-content {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 2rem 3rem;
+  max-width: 900px;
+  width: 100%;
+  align-items: start;
+}
+
+/* Roman numeral */
+.station-numeral {
+  font-family: var(--font-serif);
+  font-size: clamp(5rem, 12vw, 9rem);
+  font-weight: 700;
+  color: var(--clr-gold);
+  line-height: 0.9;
+  opacity: 0.25;
+  user-select: none;
+  position: sticky;
+  top: calc(var(--header-h) + 1rem);
+  align-self: start;
+  letter-spacing: -0.02em;
+}
+
+/* Station body copy */
+.station-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.station-title {
+  font-family: var(--font-serif);
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--clr-text);
+}
+
+.station-reflection {
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  color: var(--clr-text-muted);
+  line-height: 1.8;
+}
+
+.station-prayer {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--clr-gold);
+  border-left: 2px solid var(--clr-gold);
+  padding-left: 1rem;
+}
+
+/* ── Virtual Candle Button ───────────────────────────────────────────────── */
+.candle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.7rem 1.5rem;
+  background: transparent;
+  border: 1px solid var(--clr-border);
+  border-radius: 40px;
+  color: var(--clr-text-muted);
+  font-family: var(--font-sans);
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  cursor: pointer;
+  transition:
+    background var(--transition),
+    border-color var(--transition),
+    color var(--transition),
+    box-shadow var(--transition);
+  align-self: flex-start;
+}
+
+.candle-btn:hover,
+.candle-btn:focus-visible {
+  border-color: var(--clr-gold);
+  color: var(--clr-gold);
+  outline: none;
+}
+
+.candle-btn[aria-pressed="true"] {
+  background: rgba(255, 159, 67, 0.1);
+  border-color: var(--clr-candle-lit);
+  color: var(--clr-candle-lit);
+  box-shadow: 0 0 20px var(--clr-candle-glow), 0 0 6px var(--clr-candle-glow) inset;
+}
+
+.candle-btn[aria-pressed="true"] .candle-label::before {
+  content: 'Candle Lit ';
+}
+
+.candle-btn[aria-pressed="false"] .candle-label::before {
+  content: 'Light a Candle';
+}
+
+/* Hide the original text that's now provided by ::before */
+.candle-btn .candle-label {
+  font-size: 0;
+}
+
+.candle-btn .candle-label::before {
+  font-size: 0.88rem;
+}
+
+.candle-icon {
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: filter var(--transition), transform var(--transition);
+}
+
+.candle-btn[aria-pressed="true"] .candle-icon {
+  filter: drop-shadow(0 0 8px #ff9f43) drop-shadow(0 0 3px #ffcc00);
+  transform: scale(1.15);
+}
+
+/* ── Footer ──────────────────────────────────────────────────────────────── */
+.site-footer {
+  position: relative;
+  padding: 4rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--clr-border);
+  background: linear-gradient(180deg, var(--clr-bg) 0%, #07070d 100%);
+}
+
+.footer-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.footer-cross {
+  display: block;
+  font-size: 2.5rem;
+  color: var(--clr-gold);
+  margin-bottom: 1rem;
+}
+
+.site-footer p {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--clr-text-muted);
+  line-height: 1.6;
+}
+
+.footer-note {
+  margin-top: 0.5rem;
+  font-size: 0.9rem !important;
+  color: var(--clr-gold) !important;
+  letter-spacing: 0.15em;
+  font-style: normal !important;
+}
+
+/* ── Responsive: Tablet ─────────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .station-content {
+    grid-template-columns: 1fr;
+    gap: 0.5rem 0;
+  }
+
+  .station-numeral {
+    position: static;
+    font-size: clamp(3.5rem, 10vw, 6rem);
+    opacity: 0.2;
+    margin-bottom: -0.5rem;
+  }
+}
+
+/* ── Responsive: Mobile ─────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  :root {
+    --header-h: 56px;
+  }
+
+  .intro-heading {
+    font-size: clamp(2.5rem, 12vw, 4rem);
+  }
+
+  .station {
+    padding: calc(var(--header-h) + 2rem) 1.25rem 3rem;
+  }
+
+  .station-numeral {
+    font-size: clamp(3rem, 15vw, 5rem);
+  }
+
+  .station-title {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+
+  .header-inner {
+    padding: 0 1rem;
+  }
+
+  .candle-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ── Responsive: Ultra-wide ─────────────────────────────────────────────── */
+@media (min-width: 1600px) {
+  .station-content {
+    max-width: 1100px;
+    gap: 2rem 5rem;
+  }
+
+  .station-numeral {
+    font-size: 11rem;
+  }
+
+  .intro-heading {
+    font-size: 8rem;
+  }
+}
+
+/* ── Reduced Motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .animate-on-scroll {
+    opacity: 1;
+    transform: none;
+  }
+
+  html { scroll-behavior: auto; }
+}
+
+/* ── Focus Visible ───────────────────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--clr-gold);
+  outline-offset: 3px;
+}
